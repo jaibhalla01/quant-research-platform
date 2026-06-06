@@ -1,11 +1,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from ..core.config import settings
+from src.core.settings import settings
 
+# Convert to string so that it can be read by SQLAlchemy
+SQLALCHEMY_DATABASE_URL = str(settings.database_url)
 
-SQLALCHEMY_DATABASE_URL = settings.database_url
-
-# Connection to the DB
+# Create the DB
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 # Creates database sessions on demand.

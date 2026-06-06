@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import SecretStr, PostgresDsn, Field
 
 from typing import Annotated
-from enums import Environment, LogLevel
+from src.core.enums import Environment, LogLevel
 
 
 class Settings(BaseSettings):
@@ -30,8 +30,4 @@ class Settings(BaseSettings):
         env_file='.env',
         env_file_encoding='utf-8'
     )
-
-
-# Create settings singleton to import into other modules later as: from core.settings import settings
-settings = Settings()
 
