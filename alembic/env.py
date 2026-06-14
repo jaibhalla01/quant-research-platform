@@ -5,9 +5,14 @@ from sqlalchemy import pool
 
 from alembic import context
 
+from src.core.settings import settings
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
+
+# Edit config so that sqlalchemy.url is read from the settings file containing .env file info
+config.set_main_option("sqlalchemy.url", str(settings.database_url))
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
